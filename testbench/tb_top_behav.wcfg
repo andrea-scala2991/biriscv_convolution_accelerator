@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="939.394 ns"></ZoomEndTime>
+      <Cursor1Time time="150.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="202"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="198" />
+   <wvobject type="logic" fp_name="/tb_top/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider4303" type="divider">
+      <obj_property name="label">NEXT PC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_npc/next_pc_f_o">
+      <obj_property name="ElementShortName">next_pc_f_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">next_pc_f_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider4337" type="divider">
+      <obj_property name="label">FETCH</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_fetch/pc_f_q">
+      <obj_property name="ElementShortName">pc_f_q[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_f_q[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_fetch/icache_inst_i">
+      <obj_property name="ElementShortName">icache_inst_i[63:0]</obj_property>
+      <obj_property name="ObjectShortName">icache_inst_i[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_fetch/next_taken_f_i">
+      <obj_property name="ElementShortName">next_taken_f_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">next_taken_f_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_fetch/fetch_accept_i">
+      <obj_property name="ElementShortName">fetch_accept_i</obj_property>
+      <obj_property name="ObjectShortName">fetch_accept_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_fetch/icache_accept_i">
+      <obj_property name="ElementShortName">icache_accept_i</obj_property>
+      <obj_property name="ObjectShortName">icache_accept_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_fetch/icache_valid_i">
+      <obj_property name="ElementShortName">icache_valid_i</obj_property>
+      <obj_property name="ObjectShortName">icache_valid_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_fetch/icache_error_i">
+      <obj_property name="ElementShortName">icache_error_i</obj_property>
+      <obj_property name="ObjectShortName">icache_error_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_in_valid_i">
+      <obj_property name="ElementShortName">fetch_in_valid_i</obj_property>
+      <obj_property name="ObjectShortName">fetch_in_valid_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_in_pred_branch_i">
+      <obj_property name="ElementShortName">fetch_in_pred_branch_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">fetch_in_pred_branch_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_in_fault_fetch_i">
+      <obj_property name="ElementShortName">fetch_in_fault_fetch_i</obj_property>
+      <obj_property name="ObjectShortName">fetch_in_fault_fetch_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_in_fault_page_i">
+      <obj_property name="ElementShortName">fetch_in_fault_page_i</obj_property>
+      <obj_property name="ObjectShortName">fetch_in_fault_page_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_in_pc_i">
+      <obj_property name="ElementShortName">fetch_in_pc_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fetch_in_pc_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_accept_i">
+      <obj_property name="ElementShortName">fetch_out0_accept_i</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_accept_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_accept_i">
+      <obj_property name="ElementShortName">fetch_out1_accept_i</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_accept_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/branch_request_i">
+      <obj_property name="ElementShortName">branch_request_i</obj_property>
+      <obj_property name="ObjectShortName">branch_request_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/branch_pc_i">
+      <obj_property name="ElementShortName">branch_pc_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">branch_pc_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/branch_priv_i">
+      <obj_property name="ElementShortName">branch_priv_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">branch_priv_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_in_accept_o">
+      <obj_property name="ElementShortName">fetch_in_accept_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_in_accept_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_valid_o">
+      <obj_property name="ElementShortName">fetch_out0_valid_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_valid_o</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_pc_o">
+      <obj_property name="ElementShortName">fetch_out0_pc_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_pc_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_fault_fetch_o">
+      <obj_property name="ElementShortName">fetch_out0_fault_fetch_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_fault_fetch_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_fault_page_o">
+      <obj_property name="ElementShortName">fetch_out0_fault_page_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_fault_page_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_exec_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_exec_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_exec_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_lsu_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_lsu_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_lsu_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_branch_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_branch_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_branch_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_mul_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_mul_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_mul_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_div_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_div_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_div_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_csr_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_csr_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_csr_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_rd_valid_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_rd_valid_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_rd_valid_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out0_instr_invalid_o">
+      <obj_property name="ElementShortName">fetch_out0_instr_invalid_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out0_instr_invalid_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_valid_o">
+      <obj_property name="ElementShortName">fetch_out1_valid_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_valid_o</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_pc_o">
+      <obj_property name="ElementShortName">fetch_out1_pc_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_pc_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_fault_fetch_o">
+      <obj_property name="ElementShortName">fetch_out1_fault_fetch_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_fault_fetch_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_fault_page_o">
+      <obj_property name="ElementShortName">fetch_out1_fault_page_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_fault_page_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_exec_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_exec_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_exec_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_lsu_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_lsu_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_lsu_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_branch_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_branch_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_branch_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_mul_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_mul_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_mul_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_div_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_div_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_div_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_csr_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_csr_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_csr_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_rd_valid_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_rd_valid_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_rd_valid_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_out1_instr_invalid_o">
+      <obj_property name="ElementShortName">fetch_out1_instr_invalid_o</obj_property>
+      <obj_property name="ObjectShortName">fetch_out1_instr_invalid_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/enable_muldiv_w">
+      <obj_property name="ElementShortName">enable_muldiv_w</obj_property>
+      <obj_property name="ObjectShortName">enable_muldiv_w</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider4340" type="divider">
+      <obj_property name="label">DECODE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_frontend/u_decode/fetch_in_instr_i">
+      <obj_property name="ElementShortName">fetch_in_instr_i[63:0]</obj_property>
+      <obj_property name="ObjectShortName">fetch_in_instr_i[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_frontend/u_decode/enable_muldiv_w">
+      <obj_property name="ElementShortName">enable_muldiv_w</obj_property>
+      <obj_property name="ObjectShortName">enable_muldiv_w</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider4344" type="divider">
+      <obj_property name="label">ISSUE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_issue/fetch0_valid_i">
+      <obj_property name="ElementShortName">fetch0_valid_i</obj_property>
+      <obj_property name="ObjectShortName">fetch0_valid_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/fetch0_instr_i">
+      <obj_property name="ElementShortName">fetch0_instr_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fetch0_instr_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider4346" type="divider">
+      <obj_property name="label">PIPE 1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_exec0/opcode_valid_i">
+      <obj_property name="ElementShortName">opcode_valid_i</obj_property>
+      <obj_property name="ObjectShortName">opcode_valid_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec0/opcode_opcode_i">
+      <obj_property name="ElementShortName">opcode_opcode_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_opcode_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_exec0/opcode_invalid_i">
+      <obj_property name="ElementShortName">opcode_invalid_i</obj_property>
+      <obj_property name="ObjectShortName">opcode_invalid_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec0/opcode_rd_idx_i">
+      <obj_property name="ElementShortName">opcode_rd_idx_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_rd_idx_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec0/opcode_ra_idx_i">
+      <obj_property name="ElementShortName">opcode_ra_idx_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_ra_idx_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec0/opcode_rb_idx_i">
+      <obj_property name="ElementShortName">opcode_rb_idx_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_rb_idx_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec0/opcode_ra_operand_i">
+      <obj_property name="ElementShortName">opcode_ra_operand_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_ra_operand_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec0/opcode_rb_operand_i">
+      <obj_property name="ElementShortName">opcode_rb_operand_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_rb_operand_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider4347" type="divider">
+      <obj_property name="label">PIPE 2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_exec1/opcode_valid_i">
+      <obj_property name="ElementShortName">opcode_valid_i</obj_property>
+      <obj_property name="ObjectShortName">opcode_valid_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec1/opcode_opcode_i">
+      <obj_property name="ElementShortName">opcode_opcode_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_opcode_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_dut/u_exec1/opcode_invalid_i">
+      <obj_property name="ElementShortName">opcode_invalid_i</obj_property>
+      <obj_property name="ObjectShortName">opcode_invalid_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec1/opcode_rd_idx_i">
+      <obj_property name="ElementShortName">opcode_rd_idx_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_rd_idx_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec1/opcode_ra_idx_i">
+      <obj_property name="ElementShortName">opcode_ra_idx_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_ra_idx_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec1/opcode_rb_idx_i">
+      <obj_property name="ElementShortName">opcode_rb_idx_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_rb_idx_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec1/opcode_ra_operand_i">
+      <obj_property name="ElementShortName">opcode_ra_operand_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_ra_operand_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_exec1/opcode_rb_operand_i">
+      <obj_property name="ElementShortName">opcode_rb_operand_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode_rb_operand_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider20832" type="divider">
+      <obj_property name="label">TCM MEM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_i_rd_i">
+      <obj_property name="ElementShortName">mem_i_rd_i</obj_property>
+      <obj_property name="ObjectShortName">mem_i_rd_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_i_flush_i">
+      <obj_property name="ElementShortName">mem_i_flush_i</obj_property>
+      <obj_property name="ObjectShortName">mem_i_flush_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_i_invalidate_i">
+      <obj_property name="ElementShortName">mem_i_invalidate_i</obj_property>
+      <obj_property name="ObjectShortName">mem_i_invalidate_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_i_pc_i">
+      <obj_property name="ElementShortName">mem_i_pc_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_i_pc_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_d_addr_i">
+      <obj_property name="ElementShortName">mem_d_addr_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_d_addr_i[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_d_data_wr_i">
+      <obj_property name="ElementShortName">mem_d_data_wr_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_d_data_wr_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_rd_i">
+      <obj_property name="ElementShortName">mem_d_rd_i</obj_property>
+      <obj_property name="ObjectShortName">mem_d_rd_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_d_wr_i">
+      <obj_property name="ElementShortName">mem_d_wr_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_d_wr_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_cacheable_i">
+      <obj_property name="ElementShortName">mem_d_cacheable_i</obj_property>
+      <obj_property name="ObjectShortName">mem_d_cacheable_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_d_req_tag_i">
+      <obj_property name="ElementShortName">mem_d_req_tag_i[10:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_d_req_tag_i[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_invalidate_i">
+      <obj_property name="ElementShortName">mem_d_invalidate_i</obj_property>
+      <obj_property name="ObjectShortName">mem_d_invalidate_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_writeback_i">
+      <obj_property name="ElementShortName">mem_d_writeback_i</obj_property>
+      <obj_property name="ObjectShortName">mem_d_writeback_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_flush_i">
+      <obj_property name="ElementShortName">mem_d_flush_i</obj_property>
+      <obj_property name="ObjectShortName">mem_d_flush_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_i_accept_o">
+      <obj_property name="ElementShortName">mem_i_accept_o</obj_property>
+      <obj_property name="ObjectShortName">mem_i_accept_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_i_valid_o">
+      <obj_property name="ElementShortName">mem_i_valid_o</obj_property>
+      <obj_property name="ObjectShortName">mem_i_valid_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_i_error_o">
+      <obj_property name="ElementShortName">mem_i_error_o</obj_property>
+      <obj_property name="ObjectShortName">mem_i_error_o</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_i_inst_o">
+      <obj_property name="ElementShortName">mem_i_inst_o[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_i_inst_o[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_d_data_rd_o">
+      <obj_property name="ElementShortName">mem_d_data_rd_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_d_data_rd_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_accept_o">
+      <obj_property name="ElementShortName">mem_d_accept_o</obj_property>
+      <obj_property name="ObjectShortName">mem_d_accept_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_ack_o">
+      <obj_property name="ElementShortName">mem_d_ack_o</obj_property>
+      <obj_property name="ObjectShortName">mem_d_ack_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_error_o">
+      <obj_property name="ElementShortName">mem_d_error_o</obj_property>
+      <obj_property name="ObjectShortName">mem_d_error_o</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_d_resp_tag_o">
+      <obj_property name="ElementShortName">mem_d_resp_tag_o[10:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_d_resp_tag_o[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/ext_accept_w">
+      <obj_property name="ElementShortName">ext_accept_w</obj_property>
+      <obj_property name="ObjectShortName">ext_accept_w</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/ext_ack_w">
+      <obj_property name="ElementShortName">ext_ack_w</obj_property>
+      <obj_property name="ObjectShortName">ext_ack_w</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/ext_read_data_w">
+      <obj_property name="ElementShortName">ext_read_data_w[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_read_data_w[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/ext_wr_w">
+      <obj_property name="ElementShortName">ext_wr_w[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_wr_w[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/ext_rd_w">
+      <obj_property name="ElementShortName">ext_rd_w</obj_property>
+      <obj_property name="ObjectShortName">ext_rd_w</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/ext_len_w">
+      <obj_property name="ElementShortName">ext_len_w[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_len_w[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/ext_addr_w">
+      <obj_property name="ElementShortName">ext_addr_w[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_addr_w[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/ext_write_data_w">
+      <obj_property name="ElementShortName">ext_write_data_w[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_write_data_w[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/muxed_hi_w">
+      <obj_property name="ElementShortName">muxed_hi_w</obj_property>
+      <obj_property name="ObjectShortName">muxed_hi_w</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/muxed_addr_w">
+      <obj_property name="ElementShortName">muxed_addr_w[12:0]</obj_property>
+      <obj_property name="ObjectShortName">muxed_addr_w[12:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/muxed_data_w">
+      <obj_property name="ElementShortName">muxed_data_w[31:0]</obj_property>
+      <obj_property name="ObjectShortName">muxed_data_w[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/muxed_wr_w">
+      <obj_property name="ElementShortName">muxed_wr_w[3:0]</obj_property>
+      <obj_property name="ObjectShortName">muxed_wr_w[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/data_r_w">
+      <obj_property name="ElementShortName">data_r_w[63:0]</obj_property>
+      <obj_property name="ObjectShortName">data_r_w[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/muxed_hi_q">
+      <obj_property name="ElementShortName">muxed_hi_q</obj_property>
+      <obj_property name="ObjectShortName">muxed_hi_q</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_i_valid_q">
+      <obj_property name="ElementShortName">mem_i_valid_q</obj_property>
+      <obj_property name="ObjectShortName">mem_i_valid_q</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_accept_q">
+      <obj_property name="ElementShortName">mem_d_accept_q</obj_property>
+      <obj_property name="ObjectShortName">mem_d_accept_q</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_mem/mem_d_tag_q">
+      <obj_property name="ElementShortName">mem_d_tag_q[10:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_d_tag_q[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/mem_d_ack_q">
+      <obj_property name="ElementShortName">mem_d_ack_q</obj_property>
+      <obj_property name="ObjectShortName">mem_d_ack_q</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top/u_mem/ext_ack_q">
+      <obj_property name="ElementShortName">ext_ack_q</obj_property>
+      <obj_property name="ObjectShortName">ext_ack_q</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider22398" type="divider">
+      <obj_property name="label">REGFILE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/rd0_i">
+      <obj_property name="ElementShortName">rd0_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rd0_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/rd1_i">
+      <obj_property name="ElementShortName">rd1_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rd1_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/rd0_value_i">
+      <obj_property name="ElementShortName">rd0_value_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd0_value_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/rd1_value_i">
+      <obj_property name="ElementShortName">rd1_value_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd1_value_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/ra0_i">
+      <obj_property name="ElementShortName">ra0_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ra0_i[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/rb0_i">
+      <obj_property name="ElementShortName">rb0_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rb0_i[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/ra1_i">
+      <obj_property name="ElementShortName">ra1_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ra1_i[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/rb1_i">
+      <obj_property name="ElementShortName">rb1_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rb1_i[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/ra0_value_o">
+      <obj_property name="ElementShortName">ra0_value_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ra0_value_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/rb0_value_o">
+      <obj_property name="ElementShortName">rb0_value_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rb0_value_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/ra1_value_o">
+      <obj_property name="ElementShortName">ra1_value_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ra1_value_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/rb1_value_o">
+      <obj_property name="ElementShortName">rb1_value_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rb1_value_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r1_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r1_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r1_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r2_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r2_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r2_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r3_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r3_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r3_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r4_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r4_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r4_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r5_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r5_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r5_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r6_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r6_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r6_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r7_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r7_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r7_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r8_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r8_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r8_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r9_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r9_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r9_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r10_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r10_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r10_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r11_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r11_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r11_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r12_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r12_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r12_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r13_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r13_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r13_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r14_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r14_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r14_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r15_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r15_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r15_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r16_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r16_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r16_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r17_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r17_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r17_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r18_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r18_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r18_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r19_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r19_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r19_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r20_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r20_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r20_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r21_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r21_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r21_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r22_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r22_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r22_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r23_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r23_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r23_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r24_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r24_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r24_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r25_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r25_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r25_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r26_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r26_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r26_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r27_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r27_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r27_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r28_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r28_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r28_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r29_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r29_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r29_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r30_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r30_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r30_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.reg_r31_q ">
+      <obj_property name="ElementShortName">\REGFILE.reg_r31_q [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.reg_r31_q [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x0_zero_w ">
+      <obj_property name="ElementShortName">\REGFILE.x0_zero_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x0_zero_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x1_ra_w ">
+      <obj_property name="ElementShortName">\REGFILE.x1_ra_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x1_ra_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x2_sp_w ">
+      <obj_property name="ElementShortName">\REGFILE.x2_sp_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x2_sp_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x3_gp_w ">
+      <obj_property name="ElementShortName">\REGFILE.x3_gp_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x3_gp_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x4_tp_w ">
+      <obj_property name="ElementShortName">\REGFILE.x4_tp_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x4_tp_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x5_t0_w ">
+      <obj_property name="ElementShortName">\REGFILE.x5_t0_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x5_t0_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x6_t1_w ">
+      <obj_property name="ElementShortName">\REGFILE.x6_t1_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x6_t1_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x7_t2_w ">
+      <obj_property name="ElementShortName">\REGFILE.x7_t2_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x7_t2_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x8_s0_w ">
+      <obj_property name="ElementShortName">\REGFILE.x8_s0_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x8_s0_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x9_s1_w ">
+      <obj_property name="ElementShortName">\REGFILE.x9_s1_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x9_s1_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x10_a0_w ">
+      <obj_property name="ElementShortName">\REGFILE.x10_a0_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x10_a0_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x11_a1_w ">
+      <obj_property name="ElementShortName">\REGFILE.x11_a1_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x11_a1_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x12_a2_w ">
+      <obj_property name="ElementShortName">\REGFILE.x12_a2_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x12_a2_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x13_a3_w ">
+      <obj_property name="ElementShortName">\REGFILE.x13_a3_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x13_a3_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x14_a4_w ">
+      <obj_property name="ElementShortName">\REGFILE.x14_a4_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x14_a4_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x15_a5_w ">
+      <obj_property name="ElementShortName">\REGFILE.x15_a5_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x15_a5_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x16_a6_w ">
+      <obj_property name="ElementShortName">\REGFILE.x16_a6_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x16_a6_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x17_a7_w ">
+      <obj_property name="ElementShortName">\REGFILE.x17_a7_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x17_a7_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x18_s2_w ">
+      <obj_property name="ElementShortName">\REGFILE.x18_s2_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x18_s2_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x19_s3_w ">
+      <obj_property name="ElementShortName">\REGFILE.x19_s3_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x19_s3_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x20_s4_w ">
+      <obj_property name="ElementShortName">\REGFILE.x20_s4_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x20_s4_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x21_s5_w ">
+      <obj_property name="ElementShortName">\REGFILE.x21_s5_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x21_s5_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x22_s6_w ">
+      <obj_property name="ElementShortName">\REGFILE.x22_s6_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x22_s6_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x23_s7_w ">
+      <obj_property name="ElementShortName">\REGFILE.x23_s7_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x23_s7_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x24_s8_w ">
+      <obj_property name="ElementShortName">\REGFILE.x24_s8_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x24_s8_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x25_s9_w ">
+      <obj_property name="ElementShortName">\REGFILE.x25_s9_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x25_s9_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x26_s10_w ">
+      <obj_property name="ElementShortName">\REGFILE.x26_s10_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x26_s10_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x27_s11_w ">
+      <obj_property name="ElementShortName">\REGFILE.x27_s11_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x27_s11_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x28_t3_w ">
+      <obj_property name="ElementShortName">\REGFILE.x28_t3_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x28_t3_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x29_t4_w ">
+      <obj_property name="ElementShortName">\REGFILE.x29_t4_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x29_t4_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x30_t5_w ">
+      <obj_property name="ElementShortName">\REGFILE.x30_t5_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x30_t5_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.x31_t6_w ">
+      <obj_property name="ElementShortName">\REGFILE.x31_t6_w [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.x31_t6_w [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.ra0_value_r ">
+      <obj_property name="ElementShortName">\REGFILE.ra0_value_r [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.ra0_value_r [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.rb0_value_r ">
+      <obj_property name="ElementShortName">\REGFILE.rb0_value_r [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.rb0_value_r [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.ra1_value_r ">
+      <obj_property name="ElementShortName">\REGFILE.ra1_value_r [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.ra1_value_r [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/\REGFILE.rb1_value_r ">
+      <obj_property name="ElementShortName">\REGFILE.rb1_value_r [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\REGFILE.rb1_value_r [31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/SUPPORT_REGFILE_XILINX">
+      <obj_property name="ElementShortName">SUPPORT_REGFILE_XILINX[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SUPPORT_REGFILE_XILINX[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top/u_dut/u_issue/u_regfile/SUPPORT_DUAL_ISSUE">
+      <obj_property name="ElementShortName">SUPPORT_DUAL_ISSUE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SUPPORT_DUAL_ISSUE[31:0]</obj_property>
+   </wvobject>
+</wave_config>
