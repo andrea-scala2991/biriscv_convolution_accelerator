@@ -28,7 +28,7 @@ module biriscv_frontend
 // Params
 //-----------------------------------------------------------------
 #(
-     parameter SUPPORT_BRANCH_PREDICTION = 1
+     parameter SUPPORT_BRANCH_PREDICTION = 0
     ,parameter SUPPORT_MULDIV   = 1
     ,parameter SUPPORT_MMU      = 1
     ,parameter EXTRA_DECODE_STAGE = 0
@@ -86,6 +86,9 @@ module biriscv_frontend
     ,output          fetch0_instr_mul_o
     ,output          fetch0_instr_div_o
     ,output          fetch0_instr_csr_o
+    
+    ,output          fetch0_instr_conv_o
+    
     ,output          fetch0_instr_rd_valid_o
     ,output          fetch0_instr_invalid_o
     ,output          fetch1_valid_o
@@ -99,6 +102,9 @@ module biriscv_frontend
     ,output          fetch1_instr_mul_o
     ,output          fetch1_instr_div_o
     ,output          fetch1_instr_csr_o
+    
+    ,output          fetch1_instr_conv_o
+    
     ,output          fetch1_instr_rd_valid_o
     ,output          fetch1_instr_invalid_o
 );
@@ -187,6 +193,7 @@ u_decode
     ,.fetch_out0_instr_mul_o(fetch0_instr_mul_o)
     ,.fetch_out0_instr_div_o(fetch0_instr_div_o)
     ,.fetch_out0_instr_csr_o(fetch0_instr_csr_o)
+    ,.fetch_out0_instr_conv_o(fetch0_instr_conv_o)
     ,.fetch_out0_instr_rd_valid_o(fetch0_instr_rd_valid_o)
     ,.fetch_out0_instr_invalid_o(fetch0_instr_invalid_o)
     ,.fetch_out1_valid_o(fetch1_valid_o)
@@ -200,6 +207,7 @@ u_decode
     ,.fetch_out1_instr_mul_o(fetch1_instr_mul_o)
     ,.fetch_out1_instr_div_o(fetch1_instr_div_o)
     ,.fetch_out1_instr_csr_o(fetch1_instr_csr_o)
+    ,.fetch_out1_instr_conv_o(fetch1_instr_conv_o)
     ,.fetch_out1_instr_rd_valid_o(fetch1_instr_rd_valid_o)
     ,.fetch_out1_instr_invalid_o(fetch1_instr_invalid_o)
 );

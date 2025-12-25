@@ -45,6 +45,7 @@ module biriscv_pipe_ctrl
     ,input           issue_csr_i
     ,input           issue_div_i
     ,input           issue_mul_i
+    ,input           issue_conv_i
     ,input           issue_branch_i
     ,input           issue_rd_valid_i
     ,input  [4:0]    issue_rd_i
@@ -92,7 +93,10 @@ module biriscv_pipe_ctrl
     // Out of pipe: Divide Result
     ,input           div_complete_i
     ,input  [31:0]   div_result_i
-
+    
+    //CONV RESULT
+    ,input           conv_complete_i
+    ,input  [31:0]   conv_result_i
     // Commit
     ,output          valid_wb_o
     ,output          csr_wb_o
@@ -121,10 +125,11 @@ module biriscv_pipe_ctrl
 wire squash_e1_e2_w;
 wire branch_misaligned_w = (issue_branch_taken_i && issue_branch_target_i[1:0] != 2'b0);
 
+
 //-------------------------------------------------------------
 // E1 / Address
 //------------------------------------------------------------- 
-`define PCINFO_W     10
+`define PCINFO_W         11
 `define PCINFO_ALU       0
 `define PCINFO_LOAD      1
 `define PCINFO_STORE     2
@@ -136,7 +141,19 @@ wire branch_misaligned_w = (issue_branch_taken_i && issue_branch_target_i[1:0] !
 `define PCINFO_INTR      8
 `define PCINFO_COMPLETE  9
 
+`define PCINFO_CONV      10
+
+
 `define RD_IDX_R    11:7
+
+
+// Treat SETBASE / SETSIZE as single-cycle "completed" conv ops
+wire conv_complete_eff_w;
+assign conv_complete_eff_w =
+    conv_complete_i ||
+    (ctrl_e1_q[`PCINFO_CONV] && ~ctrl_e1_q[`PCINFO_RD_VALID]);
+
+
 
 reg                     valid_e1_q;
 reg [`PCINFO_W-1:0]     ctrl_e1_q;
@@ -171,6 +188,10 @@ begin
     ctrl_e1_q[`PCINFO_CSR]      <= issue_csr_i & ~take_interrupt_i;
     ctrl_e1_q[`PCINFO_DIV]      <= issue_div_i & ~take_interrupt_i;
     ctrl_e1_q[`PCINFO_MUL]      <= issue_mul_i & ~take_interrupt_i;
+    
+    ctrl_e1_q[`PCINFO_CONV]     <= issue_conv_i & ~take_interrupt_i;
+
+    
     ctrl_e1_q[`PCINFO_BRANCH]   <= issue_branch_i & ~take_interrupt_i;
     ctrl_e1_q[`PCINFO_RD_VALID] <= issue_rd_valid_i & ~take_interrupt_i;
     ctrl_e1_q[`PCINFO_INTR]     <= take_interrupt_i;
@@ -287,6 +308,10 @@ begin
         result_e2_q <= div_result_i; 
     else if (ctrl_e1_q[`PCINFO_CSR])
         result_e2_q <= csr_result_value_e1_i;
+    
+    else if (ctrl_e1_q[`PCINFO_CONV])
+    result_e2_q <= conv_result_i;
+    
     else
         result_e2_q <= alu_result_e1_i;
 end
@@ -304,6 +329,10 @@ begin
         result_e2_r = mem_result_e2_i;
     else if (SUPPORT_MUL_BYPASS && valid_e2_w && ctrl_e2_q[`PCINFO_MUL])
         result_e2_r = mul_result_e2_i;
+    
+    else if (valid_e2_w && ctrl_e2_q[`PCINFO_CONV])
+        result_e2_r = conv_result_i;
+
 end
 
 wire   load_store_e2_w = ctrl_e2_q[`PCINFO_LOAD] | ctrl_e2_q[`PCINFO_STORE];
@@ -313,7 +342,10 @@ assign rd_e2_o         = {5{(valid_e2_w && ctrl_e2_q[`PCINFO_RD_VALID] && ~stall
 assign result_e2_o     = result_e2_r;
 
 // Load store result not ready when reaching E2
-assign stall_o         = (ctrl_e1_q[`PCINFO_DIV] && ~div_complete_i) || ((ctrl_e2_q[`PCINFO_LOAD] | ctrl_e2_q[`PCINFO_STORE]) & ~mem_complete_i);
+assign stall_o =
+   (ctrl_e1_q[`PCINFO_DIV]  && ~div_complete_i)      ||
+   (ctrl_e1_q[`PCINFO_CONV] && ~conv_complete_eff_w) ||
+   ((ctrl_e2_q[`PCINFO_LOAD] | ctrl_e2_q[`PCINFO_STORE]) & ~mem_complete_i);
 
 reg [`EXCEPTION_W-1:0] exception_e2_r;
 always @ *

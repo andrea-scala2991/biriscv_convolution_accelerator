@@ -63,6 +63,7 @@ module biriscv_decode
     ,output          fetch_out0_instr_mul_o
     ,output          fetch_out0_instr_div_o
     ,output          fetch_out0_instr_csr_o
+    ,output          fetch_out0_instr_conv_o
     ,output          fetch_out0_instr_rd_valid_o
     ,output          fetch_out0_instr_invalid_o
     ,output          fetch_out1_valid_o
@@ -76,6 +77,7 @@ module biriscv_decode
     ,output          fetch_out1_instr_mul_o
     ,output          fetch_out1_instr_div_o
     ,output          fetch_out1_instr_csr_o
+    ,output          fetch_out1_instr_conv_o
     ,output          fetch_out1_instr_rd_valid_o
     ,output          fetch_out1_instr_invalid_o
 );
@@ -251,6 +253,7 @@ begin
         ,.mul_o(fetch_out0_instr_mul_o)
         ,.div_o(fetch_out0_instr_div_o)
         ,.csr_o(fetch_out0_instr_csr_o)
+        ,.conv_o(fetch_out0_instr_conv_o)
         ,.rd_valid_o(fetch_out0_instr_rd_valid_o)
     );
 
@@ -269,6 +272,7 @@ begin
         ,.mul_o(fetch_out1_instr_mul_o)
         ,.div_o(fetch_out1_instr_div_o)
         ,.csr_o(fetch_out1_instr_csr_o)
+        ,.conv_o(fetch_out1_instr_conv_o)
         ,.rd_valid_o(fetch_out1_instr_rd_valid_o)
     );
 end

@@ -32,7 +32,7 @@ module biriscv_issue
     ,parameter SUPPORT_DUAL_ISSUE = 1
     ,parameter SUPPORT_LOAD_BYPASS = 1
     ,parameter SUPPORT_MUL_BYPASS = 1
-    ,parameter SUPPORT_REGFILE_XILINX = 0
+    ,parameter SUPPORT_REGFILE_XILINX = 1
 )
 //-----------------------------------------------------------------
 // Ports
@@ -52,6 +52,9 @@ module biriscv_issue
     ,input           fetch0_instr_mul_i
     ,input           fetch0_instr_div_i
     ,input           fetch0_instr_csr_i
+    
+    ,input           fetch0_instr_conv_i
+    
     ,input           fetch0_instr_rd_valid_i
     ,input           fetch0_instr_invalid_i
     ,input           fetch1_valid_i
@@ -65,6 +68,9 @@ module biriscv_issue
     ,input           fetch1_instr_mul_i
     ,input           fetch1_instr_div_i
     ,input           fetch1_instr_csr_i
+    
+    ,input           fetch1_instr_conv_i
+    
     ,input           fetch1_instr_rd_valid_i
     ,input           fetch1_instr_invalid_i
     ,input           branch_exec0_request_i
@@ -100,6 +106,11 @@ module biriscv_issue
     ,input  [ 31:0]  writeback_mul_value_i
     ,input           writeback_div_valid_i
     ,input  [ 31:0]  writeback_div_value_i
+    
+    ,input           conv_writeback_valid_i
+    ,input  [31:0]   conv_writeback_value_i
+    
+    
     ,input  [ 31:0]  csr_result_e1_value_i
     ,input           csr_result_e1_write_i
     ,input  [ 31:0]  csr_result_e1_wdata_i
@@ -173,6 +184,18 @@ module biriscv_issue
     ,output [  5:0]  csr_writeback_exception_o
     ,output [ 31:0]  csr_writeback_exception_pc_o
     ,output [ 31:0]  csr_writeback_exception_addr_o
+    
+    ,output          conv_opcode_valid_o
+    ,output [31:0]   conv_opcode_opcode_o
+    ,output [31:0]   conv_opcode_pc_o
+    ,output          conv_opcode_invalid_o
+    ,output [4:0]    conv_opcode_rd_idx_o
+    ,output [4:0]    conv_opcode_ra_idx_o
+    ,output [4:0]    conv_opcode_rb_idx_o
+    ,output [31:0]   conv_opcode_ra_operand_o
+    ,output [31:0]   conv_opcode_rb_operand_o
+    
+    
     ,output          exec0_hold_o
     ,output          exec1_hold_o
     ,output          mul_hold_o
@@ -315,6 +338,8 @@ wire       issue_a_mul_w      = (slot0_valid_r ? fetch0_instr_mul_i      : fetch
 wire       issue_a_div_w      = (slot0_valid_r ? fetch0_instr_div_i      : fetch1_instr_div_i);
 wire       issue_a_csr_w      = (slot0_valid_r ? fetch0_instr_csr_i      : fetch1_instr_csr_i);
 wire       issue_a_invalid_w  = (slot0_valid_r ? fetch0_instr_invalid_i  : fetch1_instr_invalid_i);
+wire       issue_a_conv_w     = (slot0_valid_r ? fetch0_instr_conv_i     : fetch1_instr_conv_i);
+
 
 
 wire [4:0] issue_b_ra_idx_w   = opcode_b_r[19:15];
@@ -328,6 +353,8 @@ wire       issue_b_mul_w      = fetch1_instr_mul_i;
 wire       issue_b_div_w      = fetch1_instr_div_i;
 wire       issue_b_csr_w      = fetch1_instr_csr_i;
 wire       issue_b_invalid_w  = fetch1_instr_invalid_i;
+wire       issue_b_conv_w     = fetch1_instr_conv_i;
+
 
 //-------------------------------------------------------------
 // Pipe0 - Status tracking
@@ -386,6 +413,9 @@ u_pipe0_ctrl
     ,.issue_csr_i(issue_a_csr_w)
     ,.issue_div_i(issue_a_div_w)
     ,.issue_mul_i(issue_a_mul_w)
+    
+    ,.issue_conv_i(issue_a_conv_w)
+
     ,.issue_branch_i(issue_a_branch_w)
     ,.issue_rd_valid_i(issue_a_sb_alloc_w)
     ,.issue_rd_i(issue_a_rd_idx_w)
@@ -436,6 +466,10 @@ u_pipe0_ctrl
     // Out of pipe: Divide Result
     ,.div_complete_i(writeback_div_valid_i)
     ,.div_result_i(writeback_div_value_i)
+
+    // CONV RESULT
+    ,.conv_complete_i(conv_writeback_valid_i)
+    ,.conv_result_i(conv_writeback_value_i)
 
     // Commit
     ,.valid_wb_o(pipe0_valid_wb_w)
@@ -507,6 +541,10 @@ u_pipe1_ctrl
     ,.issue_lsu_i(issue_b_lsu_w)
     ,.issue_csr_i(1'b0)
     ,.issue_div_i(1'b0)
+    
+    ,.issue_conv_i(issue_b_conv_w)
+
+    
     ,.issue_mul_i(issue_b_mul_w)
     ,.issue_branch_i(issue_b_branch_w)
     ,.issue_rd_valid_i(issue_b_sb_alloc_w)
@@ -559,6 +597,11 @@ u_pipe1_ctrl
     ,.div_complete_i(writeback_div_valid_i)
     ,.div_result_i(writeback_div_value_i)
 
+    // CONV RESULT
+    ,.conv_complete_i(conv_writeback_valid_i)
+    ,.conv_result_i(conv_writeback_value_i)
+
+
     // Commit
     ,.valid_wb_o(pipe1_valid_wb_w)
     ,.csr_wb_o()
@@ -599,6 +642,32 @@ assign branch_info_pc_o           = (pipe1_branch_e1_w & branch_exec1_request_i)
 //-------------------------------------------------------------
 reg div_pending_q;
 reg csr_pending_q;
+
+reg conv_pending_q;
+reg [4:0] conv_rd_q;
+
+
+
+always @(posedge clk_i or posedge rst_i)
+if (rst_i)
+begin
+    conv_pending_q <= 1'b0;
+    conv_rd_q      <= 5'd0;
+end
+else if (pipe0_squash_e1_e2_w || pipe1_squash_e1_e2_w)
+begin
+    conv_pending_q <= 1'b0;
+end
+else if (conv_opcode_valid_o && issue_a_conv_w && issue_a_sb_alloc_w)
+begin
+    conv_pending_q <= 1'b1;
+    conv_rd_q      <= issue_a_rd_idx_w;   // remember RD
+end
+else if (conv_writeback_valid_i)
+begin
+    conv_pending_q <= 1'b0;
+end
+
 
 // Division operations take 2 - 34 cycles and stall
 // the pipeline (complete out-of-pipe) until completed.
@@ -643,7 +712,8 @@ wire dual_issue_ok_w =   enable_dual_issue_w &&  // Second pipe switched on
                         (((issue_a_exec_w | issue_a_lsu_w | issue_a_mul_w) && issue_b_exec_w)   ||
                          ((issue_a_exec_w | issue_a_lsu_w | issue_a_mul_w) && issue_b_branch_w) ||
                          ((issue_a_exec_w | issue_a_mul_w) && issue_b_lsu_w)                    ||
-                         ((issue_a_exec_w | issue_a_lsu_w) && issue_b_mul_w)
+                         ((issue_a_exec_w | issue_a_lsu_w) && issue_b_mul_w)                    ||
+                         !issue_a_conv_w
                          ) && ~take_interrupt_i;
 
 always @ *
@@ -657,6 +727,13 @@ begin
     pipe1_mux_mul_r      = 1'b0;
 
     // Execution units with >= 2 cycle latency
+    // --------------------
+    // CONV
+    // --------------------
+    if (conv_pending_q)
+        scoreboard_r[conv_rd_q] = 1'b1;
+    
+
     if (SUPPORT_LOAD_BYPASS == 0)
     begin
         if (pipe0_load_e2_w)
@@ -683,9 +760,9 @@ begin
         scoreboard_r = 32'hFFFFFFFF;
 
     // Stall - no issues...
-    if (lsu_stall_i || stall_w || div_pending_q || csr_pending_q)
+    if (lsu_stall_i || stall_w || div_pending_q || csr_pending_q || conv_pending_q)
         ;
-    // Primary slot (lsu, branch, alu, mul, div, csr)
+    // Primary slot (lsu, branch, alu, mul, div, csr, CONV)
     else if (opcode_a_valid_r &&
         !(scoreboard_r[issue_a_ra_idx_w] || 
           scoreboard_r[issue_a_rb_idx_w] ||
@@ -696,6 +773,9 @@ begin
 
         if (opcode_a_accept_r && issue_a_sb_alloc_w && (|issue_a_rd_idx_w))
             scoreboard_r[issue_a_rd_idx_w] = 1'b1;
+        if (conv_opcode_valid_o && issue_a_sb_alloc_w)
+            scoreboard_r[issue_a_rd_idx_w] = 1'b1;
+
     end
 
     // Stall - no issues...
@@ -930,6 +1010,21 @@ assign csr_opcode_rb_idx_o      = opcode0_rb_idx_o;
 assign csr_opcode_ra_operand_o  = opcode0_ra_operand_o;
 assign csr_opcode_rb_operand_o  = opcode0_rb_operand_o;
 assign csr_opcode_invalid_o     = opcode_a_issue_r && issue_a_invalid_w;
+
+//-------------------------------------------------------------
+// Convolution unit
+//-------------------------------------------------------------
+
+assign conv_opcode_valid_o        = opcode_a_issue_r && issue_a_conv_w;
+assign conv_opcode_opcode_o       = opcode0_opcode_o;
+assign conv_opcode_pc_o           = opcode0_pc_o;
+assign conv_opcode_invalid_o      = opcode0_invalid_o;
+assign conv_opcode_rd_idx_o       = opcode0_rd_idx_o;
+assign conv_opcode_ra_idx_o       = opcode0_ra_idx_o;
+assign conv_opcode_rb_idx_o       = opcode0_rb_idx_o;
+assign conv_opcode_ra_operand_o   = opcode0_ra_operand_o;
+assign conv_opcode_rb_operand_o   = opcode0_rb_operand_o;
+
 
 //-------------------------------------------------------------
 // Checker Interface

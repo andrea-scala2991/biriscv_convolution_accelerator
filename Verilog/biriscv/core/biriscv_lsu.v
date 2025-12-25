@@ -69,6 +69,14 @@ module biriscv_lsu
     ,output [ 31:0]  writeback_value_o
     ,output [  5:0]  writeback_exception_o
     ,output          stall_o
+    
+    // ---- CONV LSU CLIENT PORT ----
+    ,input         conv_req_valid_i,
+    input  [31:0] conv_req_addr_i,
+    output        conv_req_ready_o,
+    output        conv_data_valid_o,
+    output [31:0] conv_data_o
+    
 );
 
 
@@ -155,11 +163,21 @@ wire req_sw_w = ((opcode_opcode_i & `INST_LW_MASK) == `INST_SW);
 wire req_sw_lw_w = ((opcode_opcode_i & `INST_SW_MASK) == `INST_SW) || ((opcode_opcode_i & `INST_LW_MASK) == `INST_LW) || ((opcode_opcode_i & `INST_LWU_MASK) == `INST_LWU);
 wire req_sh_lh_w = ((opcode_opcode_i & `INST_SH_MASK) == `INST_SH) || ((opcode_opcode_i & `INST_LH_MASK) == `INST_LH) || ((opcode_opcode_i & `INST_LHU_MASK) == `INST_LHU);
 
+wire use_conv_w = conv_req_valid_i;
+
+// override when CONV is active
+wire [31:0] arb_mem_addr_w = use_conv_w ? conv_req_addr_i : mem_addr_r;
+wire        arb_mem_rd_w   = use_conv_w ? 1'b1           : mem_rd_r;
+
+
+
 reg [31:0]  mem_addr_r;
 reg         mem_unaligned_r;
 reg [31:0]  mem_data_r;
 reg         mem_rd_r;
 reg [3:0]   mem_wr_r;
+
+
 
 always @ *
 begin
@@ -282,7 +300,9 @@ else if (!((mem_writeback_o || mem_invalidate_o || mem_flush_o || mem_rd_o || me
 begin
     mem_addr_q         <= 32'b0;
     mem_data_wr_q      <= mem_data_r;
-    mem_rd_q           <= mem_rd_r;
+    
+    mem_rd_q           <= arb_mem_rd_w;
+    
     mem_wr_q           <= mem_wr_r;
     mem_cacheable_q    <= 1'b0;
     mem_invalidate_q   <= 1'b0;
@@ -304,7 +324,10 @@ begin
     mem_invalidate_q <= opcode_valid_i & dcache_invalidate_w;
     mem_writeback_q  <= opcode_valid_i & dcache_writeback_w;
     mem_flush_q      <= opcode_valid_i & dcache_flush_w;
-    mem_addr_q       <= mem_addr_r;
+   
+    mem_addr_q       <= arb_mem_addr_w;
+
+
 end
 
 assign mem_addr_o       = {mem_addr_q[31:2], 2'b0};
@@ -397,6 +420,12 @@ begin
             wb_result_r = mem_data_rd_i;
     end
 end
+
+assign conv_req_ready_o  = mem_accept_i && use_conv_w;
+assign conv_data_valid_o = mem_ack_i & use_conv_w;
+assign conv_data_o       = mem_data_rd_i;
+
+
 
 assign writeback_valid_o    = mem_ack_i | mem_unaligned_e2_q;
 assign writeback_value_o    = wb_result_r;

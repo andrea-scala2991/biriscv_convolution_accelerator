@@ -28,14 +28,14 @@
 `define ALU_NONE                             4'b0000
 `define ALU_SHIFTL                           4'b0001
 `define ALU_SHIFTR                           4'b0010
-`define ALU_SHIFTR_ARITH             4'b0011
-`define ALU_ADD                                4'b0100
-`define ALU_SUB                                 4'b0110
-`define ALU_AND                                4'b0111
-`define ALU_OR                                    4'b1000
-`define ALU_XOR                                 4'b1001
-`define ALU_LESS_THAN                   4'b1010
-`define ALU_LESS_THAN_SIGNED  4'b1011
+`define ALU_SHIFTR_ARITH                     4'b0011
+`define ALU_ADD                              4'b0100
+`define ALU_SUB                              4'b0110
+`define ALU_AND                              4'b0111
+`define ALU_OR                               4'b1000
+`define ALU_XOR                              4'b1001
+`define ALU_LESS_THAN                        4'b1010
+`define ALU_LESS_THAN_SIGNED                 4'b1011
 
 //--------------------------------------------------------------------
 // Instructions Masks
@@ -252,6 +252,17 @@
 `define INST_DIVU 32'h2005033
 `define INST_DIVU_MASK 32'hfe00707f
 
+//CONV UNIT CUSTOM INSTRUCTIONS
+`define INST_CONV_MASK      32'h0000707f
+`define INST_CONV           32'h0000000b   // opcode = 0001011 (custom-0)
+
+// funct3 
+`define INST_CONV_F3_MASK   32'h0000707f
+`define INST_CONV_SETBASE   32'h0000000b   // funct3=000
+`define INST_CONV_SETSIZE   32'h0000100b   // funct3=001
+`define INST_CONV_RUN       32'h0000200b   // funct3=010
+
+
 // rem
 `define INST_REM 32'h2006033
 `define INST_REM_MASK 32'hfe00707f
@@ -309,8 +320,8 @@
 `define CSR_DSCRATCH       12'h7b2
 `define CSR_SIM_CTRL       12'h8b2
 `define CSR_SIM_CTRL_MASK  32'hFFFFFFFF
-    `define CSR_SIM_CTRL_EXIT (0 << 24)
-    `define CSR_SIM_CTRL_PUTC (1 << 24)
+`define CSR_SIM_CTRL_EXIT (0 << 24)
+`define CSR_SIM_CTRL_PUTC (1 << 24)
 
 //--------------------------------------------------------------------
 // CSR Registers
@@ -319,16 +330,16 @@
 `define CSR_MSTATUS_MASK  32'hFFFFFFFF
 `define CSR_MISA          12'h301
 `define CSR_MISA_MASK     32'hFFFFFFFF
-    `define MISA_RV32     32'h40000000
-    `define MISA_RVI      32'h00000100
-    `define MISA_RVE      32'h00000010
-    `define MISA_RVM      32'h00001000
-    `define MISA_RVA      32'h00000001
-    `define MISA_RVF      32'h00000020
-    `define MISA_RVD      32'h00000008
-    `define MISA_RVC      32'h00000004
-    `define MISA_RVS      32'h00040000
-    `define MISA_RVU      32'h00100000
+`define MISA_RV32         32'h40000000
+`define MISA_RVI          32'h00000100
+`define MISA_RVE          32'h00000010
+`define MISA_RVM          32'h00001000
+`define MISA_RVA          32'h00000001
+`define MISA_RVF          32'h00000020
+`define MISA_RVD          32'h00000008
+`define MISA_RVC          32'h00000004
+`define MISA_RVS          32'h00040000
+`define MISA_RVU          32'h00100000
 `define CSR_MEDELEG       12'h302
 `define CSR_MEDELEG_MASK  32'h0000FFFF
 `define CSR_MIDELEG       12'h303
