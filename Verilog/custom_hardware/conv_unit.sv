@@ -49,8 +49,10 @@ typedef enum logic [3:0]
 {
     IDLE,
     LOAD_KERNEL_REQ,
+    LOAD_KERNEL_WAIT,
     LOAD_KERNEL_WRITE,
     LOAD_INPUT_REQ,
+    LOAD_INPUT_WAIT,
     LOAD_INPUT_WRITE,
     PREP_REQ,
     PREP_WAIT,
@@ -65,11 +67,12 @@ state_t state_q, state_d;
 /* ---------- cfg ---------- */
 logic [31:0] kernel_base_q, input_base_q;
 logic [3:0]  kernel_dim_q;
-logic [6:0]  kernel_elems_q;
 logic [11:0] input_words_q;
 
 logic [11:0] slide_q, slide_d;
-always_comb kernel_elems_q = kernel_dim_q * kernel_dim_q;
+
+logic [6:0] kernel_elems_w;
+assign kernel_elems_w = kernel_dim_q * kernel_dim_q;
 
 /* ---------- BRAMs ---------- */
 logic [$clog2(MAX_K_ELEMS)-1:0]  k_addr;
@@ -134,7 +137,7 @@ generate
     for (k = 0; k < MAX_K_ELEMS; k++) begin
         (* use_dsp = "yes" *)
         assign prod[k] =
-            (k < kernel_elems_q) ?
+            (k < kernel_elems_w) ?
                 (kernel_reg[k] * window_reg[k]) :
                 64'd0;
     end
@@ -196,10 +199,19 @@ always_comb begin
         LOAD_KERNEL_REQ: begin
             lsu_req_o  = 1;
             lsu_addr_o = kernel_base_q + (rd_idx_q<<2);
-            if (lsu_req_ready_i && lsu_data_valid_i) begin
-                state_d = LOAD_KERNEL_WRITE;
-            end
+            if (lsu_req_ready_i)
+                state_d = LOAD_KERNEL_WAIT;
         end
+        
+        LOAD_KERNEL_WAIT: begin
+            lsu_req_o  = 1;
+            lsu_addr_o = kernel_base_q + (rd_idx_q << 2);
+        
+            if (lsu_data_valid_i)
+                state_d = LOAD_KERNEL_WRITE;
+        end
+        
+        
         
         LOAD_KERNEL_WRITE: begin
             load_data_q <= lsu_data_i;
@@ -212,7 +224,7 @@ always_comb begin
 
             rd_idx_d = rd_idx_q + 1;
         
-            if (rd_idx_q+1 == kernel_elems_q) begin
+            if (rd_idx_q+1 == kernel_elems_w) begin
                 kernel_loaded_d = 1;
                 rd_idx_d = 0;
                 state_d = input_loaded_q ? IDLE : LOAD_INPUT_REQ;
@@ -224,9 +236,18 @@ always_comb begin
         LOAD_INPUT_REQ: begin
             lsu_req_o  = 1;
             lsu_addr_o = input_base_q + (rd_idx_q<<2);
-            if (lsu_req_ready_i && lsu_data_valid_i)
+            if (lsu_req_ready_i)
+                state_d = LOAD_INPUT_WAIT;
+        end
+        
+        LOAD_INPUT_WAIT: begin
+            lsu_req_o  = 1;
+            lsu_addr_o = input_base_q + (rd_idx_q << 2);
+        
+            if (lsu_data_valid_i)
                 state_d = LOAD_INPUT_WRITE;
         end
+        
         
         LOAD_INPUT_WRITE: begin
             load_data_q <= lsu_data_i;
@@ -243,14 +264,14 @@ always_comb begin
                 input_loaded_d = 1;
                 rd_idx_d = 0;
                 slide_d  = 0;
-                state_d  = IDLE;
+                state_d  = PREP_REQ;
             end else
                 state_d = LOAD_INPUT_REQ;
         end
         
         /* -------- sliding window prep -------- */
         PREP_REQ: begin
-            if (prep_idx_q < kernel_elems_q) begin
+            if (prep_idx_q < kernel_elems_w) begin
                 i_en = 1;
                 i_addr = slide_q + prep_idx_q;
                 prep_idx_hold_d = prep_idx_q;

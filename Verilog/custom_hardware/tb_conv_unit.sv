@@ -111,7 +111,7 @@ module tb_conv_unit;
             mem[input_window_base + i] = i;
 
         issue_instr(3'b000, 1, 2, 0, 0, input_window_base*4); //CONV.SETBASE X1, X2 (kernel base in x2, input window base in x1)
-        issue_instr(3'b001, 3, 4, 0, K, N);   //CONV.SETSIZE X3, X4 (kernel square size in x4, input window size in x3)
+        issue_instr(3'b001, 4, 3, 0, N, K);   //CONV.SETSIZE X3, X4 (kernel square size in x4, input window size in x3)
         
         #5000;
         

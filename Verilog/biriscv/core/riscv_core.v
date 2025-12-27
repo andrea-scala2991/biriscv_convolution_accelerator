@@ -32,10 +32,10 @@ module riscv_core
     ,parameter SUPPORT_MULDIV   = 1
     ,parameter SUPPORT_SUPER    = 0
     ,parameter SUPPORT_MMU      = 0
-    ,parameter SUPPORT_DUAL_ISSUE = 1
+    ,parameter SUPPORT_DUAL_ISSUE = 0
     ,parameter SUPPORT_LOAD_BYPASS = 1
     ,parameter SUPPORT_MUL_BYPASS = 1
-    ,parameter SUPPORT_REGFILE_XILINX = 0
+    ,parameter SUPPORT_REGFILE_XILINX = 1
     ,parameter EXTRA_DECODE_STAGE = 0
     ,parameter MEM_CACHE_ADDR_MIN = 32'h80000000
     ,parameter MEM_CACHE_ADDR_MAX = 32'h8fffffff
@@ -43,7 +43,7 @@ module riscv_core
     ,parameter NUM_BTB_ENTRIES_W = 5
     ,parameter NUM_BHT_ENTRIES  = 512
     ,parameter NUM_BHT_ENTRIES_W = 9
-    ,parameter RAS_ENABLE       = 1
+    ,parameter RAS_ENABLE       = 0
     ,parameter GSHARE_ENABLE    = 0
     ,parameter BHT_ENABLE       = 1
     ,parameter NUM_RAS_ENTRIES  = 8

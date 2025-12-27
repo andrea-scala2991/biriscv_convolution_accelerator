@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="4,864.334 ns"></ZoomStartTime>
-      <ZoomEndTime time="6,218.335 ns"></ZoomEndTime>
-      <Cursor1Time time="5,411.334 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="13.430001 us"></ZoomEndTime>
+      <Cursor1Time time="4.133829 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="180"></NameColumnWidth>
+      <NameColumnWidth column_width="176"></NameColumnWidth>
       <ValueColumnWidth column_width="60"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="31" />
+   <WVObjectSize size="32" />
    <wvobject type="logic" fp_name="/tb_conv_unit/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -134,9 +134,14 @@
       <obj_property name="ObjectShortName">input_base_q[31:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_conv_unit/dut/kernel_elems_q">
-      <obj_property name="ElementShortName">kernel_elems_q[6:0]</obj_property>
-      <obj_property name="ObjectShortName">kernel_elems_q[6:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_conv_unit/dut/kernel_dim_q">
+      <obj_property name="ElementShortName">kernel_dim_q[3:0]</obj_property>
+      <obj_property name="ObjectShortName">kernel_dim_q[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_conv_unit/dut/kernel_elems_w">
+      <obj_property name="ElementShortName">kernel_elems_w[6:0]</obj_property>
+      <obj_property name="ObjectShortName">kernel_elems_w[6:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_conv_unit/dut/input_words_q">
