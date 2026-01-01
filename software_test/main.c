@@ -2,8 +2,8 @@
 #include <stdint.h>
 #include <time.h>
 
-#define KERNEL_SIDE    9                  // square kernel side, e.g 3 > 3x3= 9 elements
-#define WINDOW_SIZE    4096               // up to 4096
+#define KERNEL_SIDE    3                  // square kernel side, e.g 3 > 3x3= 9 elements
+#define WINDOW_SIZE    1000               // up to 4096
 #define KERNEL_ELEMS   (KERNEL_SIDE * KERNEL_SIDE)
 
 #define ITERATIONS     WINDOW_SIZE - KERNEL_ELEMS +1
@@ -57,7 +57,7 @@ int main(void)
     for (uint32_t i = 0; i < ITERATIONS; i++) {
         results[i] = conv1d_software(
             kernel,
-            window + 4,
+            window + i,
             KERNEL_ELEMS,
             WINDOW_SIZE
         );
@@ -68,17 +68,16 @@ int main(void)
     /* -------------------------------------------------
        Compute elapsed time
        ------------------------------------------------- */
-    double elapsed_sec =
-        (t_end.tv_sec - t_start.tv_sec) +
-        (t_end.tv_nsec - t_start.tv_nsec) * 1e-9;
+    int elapsed_nsec =
+        (t_end.tv_nsec - t_start.tv_nsec);
 
     printf("Software convolution benchmark\n");
     printf("Kernel elements : %u\n", KERNEL_ELEMS);
     printf("Window size     : %u\n", WINDOW_SIZE);
     printf("Iterations      : %u\n", ITERATIONS);
-    printf("Total time      : %.9f s\n", elapsed_sec);
-    printf("Avg per conv    : %.6f us\n",
-           (float)((elapsed_sec / ITERATIONS) * 1e6));
+    printf("Total time      : %d ns\n", elapsed_nsec);
+    printf("Avg per conv    : %.3f ns\n",
+           (elapsed_nsec / (double)ITERATIONS));
 
     // Prevent optimization removal
     printf("Last result     : %u\n", results[ITERATIONS - 1]);

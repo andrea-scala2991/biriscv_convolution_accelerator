@@ -67,7 +67,7 @@ state_t state_q, state_d;
 /* ---------- cfg ---------- */
 logic [31:0] kernel_base_q, input_base_q;
 logic [3:0]  kernel_dim_q;
-logic [11:0] input_words_q;
+logic [12:0] input_words_q;
 
 logic [11:0] slide_q, slide_d;
 
@@ -341,7 +341,7 @@ always_ff @(posedge clk_i or posedge rst_i) begin
 
         if (is_custom && funct3==F3_SETSIZE) begin
             kernel_dim_q  <= opcode_rb_operand_i[3:0];
-            input_words_q <= opcode_ra_operand_i[11:0];
+            input_words_q <= opcode_ra_operand_i[12:0];
             kernel_loaded_q <= 0;
             input_loaded_q  <= 0;
             slide_q <= 0;

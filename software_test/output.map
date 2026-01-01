@@ -10,39 +10,39 @@ Script del linker e mappa della memoria
 
                 0x00000000                        . = 0x0
 
-.text           0x00000000      0x174
+.text           0x00000000      0x178
  *(.text.entry)
- .text.entry    0x00000000       0x28 /tmp/ccGxQDgZ.o
+ .text.entry    0x00000000       0x28 /tmp/ccRSxGGV.o
                 0x00000000                _start
  *(.text*)
- .text          0x00000028      0x14c /tmp/ccGxQDgZ.o
+ .text          0x00000028      0x150 /tmp/ccRSxGGV.o
                 0x00000028                conv1d
                 0x0000009c                main
 
 .rodata
  *(.rodata*)
 
-.data           0x00000174        0x0
+.data           0x00000178        0x0
  *(.data*)
- .data          0x00000174        0x0 /tmp/ccGxQDgZ.o
+ .data          0x00000178        0x0 /tmp/ccRSxGGV.o
 
-.bss            0x00000174     0x10e8
+.bss            0x00000178     0x4148
  *(.bss*)
- .bss           0x00000174     0x10e8 /tmp/ccGxQDgZ.o
+ .bss           0x00000178     0x4148 /tmp/ccRSxGGV.o
  *(COMMON)
-LOAD /tmp/ccGxQDgZ.o
+LOAD /tmp/ccRSxGGV.o
 OUTPUT(main_riscv.elf elf32-littleriscv)
 
 .comment        0x00000000       0x19
- .comment       0x00000000       0x19 /tmp/ccGxQDgZ.o
+ .comment       0x00000000       0x19 /tmp/ccRSxGGV.o
                                  0x1a (dimensione prima del rilassamento)
 
 .note.GNU-stack
                 0x00000000        0x0
  .note.GNU-stack
-                0x00000000        0x0 /tmp/ccGxQDgZ.o
+                0x00000000        0x0 /tmp/ccRSxGGV.o
 
 .riscv.attributes
                 0x00000000       0x2a
  .riscv.attributes
-                0x00000000       0x2a /tmp/ccGxQDgZ.o
+                0x00000000       0x2a /tmp/ccRSxGGV.o

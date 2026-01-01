@@ -7,7 +7,7 @@ static int conv_initialised = 0;
    Configuration (compile-time constants)
    ------------------------------------------------- */
 #define KERNEL_SIDE   9                  // square shaped kernel side (e.g 3 means 3x3 kernel)
-#define WINDOW_SIZE   1000               // up to 4096
+#define WINDOW_SIZE   4096               // up to 4096
 #define KERNEL_ELEMS  (KERNEL_SIDE * KERNEL_SIDE)
 
 /* -------------------------------------------------
